@@ -1,0 +1,20 @@
+{% extends 'navbar.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    {% for auctionlist in itemlist %}
+    <div class="card" style="width: 18rem">
+      <img class="card-img-top" src="{{ auctionlist.imageURL}}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">{{auctionlist.item_name}}</h5>
+        <h3 class="card-title">{{auctionlist.enddate}}</h3>
+        <h5 class="card-title">Start Price:{{auctionlist.startprice}}</h5>
+        <h5 class="card-title">{{auctionlist.highbid}}</h5>
+
+        <a href="{% url 'auction-detail' auctionlist.id %}" class="btn btn-primary">View Detail</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

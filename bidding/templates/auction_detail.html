@@ -1,0 +1,25 @@
+{% extends 'navbar.html' %} {% block content %}
+<div class="container">
+  <div class="card mb-3">
+    <img class="card-img-top" src="{{ object.imageURL}}" alt="Card image cap" />
+
+    <div class="card-body">
+      <h5 class="card-title">{{object.item_name}}</h5>
+      <p class="card-text">{{object.item_detail}}</p>
+      <p class="card-text"><small class="text-muted"> Start Price :{{object.startprice}}</small></p>
+      <p class="card-text"><small class="text-muted"> Bid Price :{{object.highbid}}</small></p>
+      <p class="card-text"><small class="text-muted"> End Date :{{object.enddate}}</small></p>
+
+      {% if bidstatus %}
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} <input class="form-control" name="bidvalue" type="text" placeholder="Default input" />
+        <button type="submit" class="btn btn-info">submit</button>
+      </form>
+      {% else %}
+      <h3>This Auction is Closed</h3>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
